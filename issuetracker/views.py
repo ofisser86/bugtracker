@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import CreateView
+from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
 from .models import Ticket
 
 # Create your views here.
@@ -13,3 +16,8 @@ class BugListView(ListView):
 class BugDetailView(DetailView):
     model = Ticket
     template_name = 'issuetracker/detail.html'
+
+class RegisterView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'issuetracker/register.html'
+    success_url = reverse_lazy('home')

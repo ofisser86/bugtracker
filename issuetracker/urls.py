@@ -5,4 +5,5 @@ from issuetracker import views
 urlpatterns = [
     url(r'^$', views.BugListView.as_view(), name='home' ),
     url(r'^(?P<pk>[0-9]+)/$', views.BugDetailView.as_view(), name='detail' ),
+    url(r'^register/$', views.CreateView.as_view(), name='register' ),
 ]
