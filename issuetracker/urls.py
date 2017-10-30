@@ -1,8 +1,7 @@
-
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
-from .views import viewlist
+from issuetracker import views
 
 urlpatterns = [
-    url('/', viewlist, name='home' ),
+    url(r'^$', views.bugList, name='home' ),
 ]
