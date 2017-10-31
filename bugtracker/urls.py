@@ -24,7 +24,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^bugs/', include('issuetracker.urls')),
     # login logout
-    url(r'^login/$', auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
-    url(r'^logout/$', auth_views.LogoutView.as_view(next_page=reverse_lazy('login')), name="logout"),
+    url('^', include('django.contrib.auth.urls')),
+    url(r'^accounts/login/$', auth_views.LoginView.as_view(template_name='issuetracker/registration/login.html'), name='login'),
+    # url(r'^login/$', auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    # url(r'^logout/$', auth_views.LogoutView.as_view(next_page=reverse_lazy('login')), name="logout"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
 + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
